@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>메인 페이지</title>
+  <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="upload.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style type="text/css">
+    hr{
+      border-top: 3px dashed #bbbb;
+    }
+  </style>
+</head>
+<body>
+  <h2><b>Service Name</b></h2>
+  <hr>
+  <center>
+    <form action="loading.jsp" method="post">
+    <div class="file-upload">
+        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">파일 선택</button>
+        <div class="image-upload-wrap">
+          <input class="file-upload-input" type="file" name="videofile" onchange="readURL(this);" accept="video/*" />
+          <div class="drag-text">
+            <h3>또는 영상 파일을 여기에 올려주세요</h3>
+          </div>
+        </div>
+        <div class="file-upload-content">
+          <img class="file-upload-image" src="#" alt="video" />
+          <div class="image-title-wrap">
+            <button type="button" onclick="removeUpload()" class="remove-image">지우기 <span class="image-title">Uploaded</span></button>
+          </div>
+        </div>
+      </div>
+      <div class = "box">
+        <br>
+        <h3>추출할 물체를 라벨링할 이름을 적어주세요</h3>
+        <textarea class="box" style="height:200px;" name="labelName">추출할 물체 라벨링 이름</textarea>
+        <br>
+      </div>
+      <input class="input-btn" type="submit" value="학습 데이터 생성시작" onclick="uploadFile()">
+    </form>
+  </center>
+</body>
+</html>
