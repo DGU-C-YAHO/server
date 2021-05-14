@@ -18,7 +18,7 @@ body {
   font-weight: 700;
 }
 .linkbox{
-  color:#bbbb;
+  color:black;
   width: 80%;
   border-color:#bbbb;
 }
@@ -36,7 +36,7 @@ body {
   background-color: #ffffff;
   border: dashed #bbbb; 
   width:40%;
-  color: #bbbb;
+  color: black;
   margin: 15px;
   padding: 10px;
 }
