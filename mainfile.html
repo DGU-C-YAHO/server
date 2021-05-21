@@ -5,6 +5,7 @@
   <title>메인 페이지</title>
   <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="upload.js"></script>
+  <script src="index.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <style type="text/css">
     hr{
@@ -16,7 +17,7 @@
   <h2><b>Service Name</b></h2>
   <hr>
   <center>
-    <form action="loading.html" method="post">
+    <form action="loading.html" method="POST" enctype="multipart/form-data">
     <div class="file-upload">
         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">파일 선택</button>
         <div class="image-upload-wrap">
