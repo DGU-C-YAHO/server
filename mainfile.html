@@ -18,7 +18,7 @@
   <h2><b>Service Name</b></h2>
   <hr>
   <center>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <form action="/upload" method="post" enctype="multipart/form-data">
     <div class="file-upload">
         <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">파일 선택</button>
         <div class="image-upload-wrap">
@@ -40,7 +40,7 @@
         <textarea class="box" style="height:200px;" name="labelName">추출할 물체 라벨링 이름</textarea>
         <br>
       </div>
-      <input class="input-btn" type="submit" value="학습 데이터 생성시작" onclick="uploadFile()">
+      <input class="input-btn" type="submit" name="Upload" value="학습 데이터 생성시작" onclick="uploadFile()">
     </form>
   </center>
 </body>
