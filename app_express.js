@@ -1,6 +1,5 @@
 var express = require('express');
-//var fs = require('fs');
-const fs = require('fs');
+var fs = require('fs');
 var app = express();
 
 //app.use(express.bodyParser());
@@ -34,9 +33,9 @@ app.post('/upload', function (req, res){
   });
 });
 */
-const multer = require('multer');
+var multer = require('multer');
 
-const upload = multer({
+var upload = multer({
   storage: multer.diskStorage({
     destination(req, file, done) {
       doNotTrack(null, 'uploads/');
