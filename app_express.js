@@ -1,5 +1,6 @@
 var express = require('express');
-var fs = require('fs');
+//var fs = require('fs');
+const fs = require('fs');
 var app = express();
 
 //app.use(express.bodyParser());
@@ -19,6 +20,7 @@ app.get('/', function (req, res) {
   });
 });
 
+/*
 app.post('/upload', function (req, res){
   fs.readFile(req.files.uploadFile.path, function (error, data) {
     var filePath = __dirname + "\\uploads\\" + req.file.uploadFile.name;
@@ -31,3 +33,28 @@ app.post('/upload', function (req, res){
     });
   });
 });
+*/
+const multer = require('multer');
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination(req, file, done) {
+      doNotTrack(null, 'uploads/');
+    },
+    filename(req, file, done) {
+      const ext = path.extname(file.originalname);
+      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+    },
+  }),
+});
+
+app.get('/upload', (req, res) => {
+  res.sendFile(path.join(__dirname, 'loading.html'));
+});
+app.post('/upload',
+  upload.fields([{ name:'uploadFile'}]),
+  (req, res) => {
+    console.log(req.files, req.body);
+    res.send('ok');
+  },
+);
