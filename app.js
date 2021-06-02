@@ -5,6 +5,7 @@ var path = require('path');
 //app.use(express.bodyParser());
 var bodyParser = require('body-parser');
 app.use(bodyParser());
+app.use(express.static(__dirname + '/public'));
 app.listen(3303, "localhost", function() {
   console.log('Server Start .');
 });
@@ -12,7 +13,7 @@ app.listen(3303, "localhost", function() {
 
 
 app.get('/', function (req, res) {
-  fs.readFile('mainchoice.html', function (error, data) {
+  fs.readFile('main.html', function (error, data) {
     res.writeHead(200, { 'Content-Type': 'text/html'});
     res.end(data, function (error){
       console.log(error);
@@ -35,7 +36,30 @@ app.get('/mainlink', function (req, res){
     });
   });
 });
-
+app.get('/loading', function (req, res){
+  fs.readFile('loading.html', function (error, data){
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(data,function (error){
+      console.log(error);
+    });
+  });
+});
+app.get('/result', function (req, res){
+  fs.readFile('result.html', function (error, data){
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(data,function (error){
+      console.log(error);
+    });
+  });
+});
+app.get('/error', function (req, res){
+  fs.readFile('error.html', function (error, data){
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(data,function (error){
+      console.log(error);
+    });
+  });
+});
 /*
 app.post('/upload', function (req, res){
   fs.readFile(req.files.uploadFile.path, function (error, data) {
