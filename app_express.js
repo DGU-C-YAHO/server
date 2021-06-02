@@ -11,9 +11,25 @@ app.listen(3303, "localhost", function() {
 
 
 app.get('/', function (req, res) {
-  fs.readFile('mainfile.html', function (error, data) {
+  fs.readFile('mainchoice.html', function (error, data) {
     res.writeHead(200, { 'Content-Type': 'text/html'});
     res.end(data, function (error){
+      console.log(error);
+    });
+  });
+});
+app.get('/mainfile', function (req, res){
+  fs.readFile('mainfile.html', function (error, data){
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(data,function (error){
+      console.log(error);
+    });
+  });
+});
+app.get('/mainlink', function (req, res){
+  fs.readFile('mainlink.html', function (error, data){
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(data,function (error){
       console.log(error);
     });
   });
@@ -46,14 +62,25 @@ var upload = multer({
     },
   }),
 });
-
+/*app.get('/upload', function (req, res){
+  fs.readFile('loading.html', function (error, data){
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(data,function (error){
+      console.log(error);
+    });
+  });
+});*/
 app.get('/upload', (req, res) => {
-  res.sendFile(path.join(__dirname, 'loading.html'));
+  res.sendFile(path.join(__dirname, 'loading'));
 });
 app.post('/upload',
   upload.fields([{ name:'uploadFile'}]),
   (req, res) => {
-    console.log(req.files, req.body);
-    res.send('loading.html');
+    fs.readFile('loading.html', function (error, data){
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.end(data,function (error){
+        console.log(error);
+      });
+    });
   },
 );

@@ -6,7 +6,41 @@
   <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="/js/upload.js"></script>
   <script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <!--<link rel="stylesheet" type="text/css" href="/css/style.css">-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript">
+    var count = 0;
+    
+    function addForm(){
+      var addedFormDiv = document.getElementById("addedFormDiv");
+  
+      var str = "";
+      str+="<br>Label : "+count+" <input type='text' name='labelName_"+count+"'> &emsp; ";
+      str+="Class Number : "+count+" <input type='text' name='labelnumber_"+count+"'>";
+      // 추가할 폼(에 들어갈 HTML)
+      
+      var addedDiv = document.createElement("div"); // 폼 생성
+      addedDiv.id = "added_"+count; // 폼 Div에 ID 부여 (삭제를 위해)
+      addedDiv.innerHTML  = str; // 폼 Div안에 HTML삽입
+      addedFormDiv.appendChild(addedDiv); // 삽입할 DIV에 생성한 폼 삽입
+  
+      count++;
+      document.baseForm.count.value=count;
+      // 다음 페이지에 몇개의 폼을 넘기는지 전달하기 위해 히든 폼에 카운트 저장
+    }
+  
+    function delForm(){
+      var addedFormDiv = document.getElementById("addedFormDiv");
+      
+      if(count >1){ // 현재 폼이 두개 이상이면
+        var addedDiv = document.getElementById("added_"+(--count));
+        // 마지막으로 생성된 폼의 ID를 통해 Div객체를 가져옴
+        addedFormDiv.removeChild(addedDiv); // 폼 삭제 
+      }else{ // 마지막 폼만 남아있다면
+        document.baseForm.reset(); // 폼 내용 삭제
+      }
+    }
+  </script>
   <style type="text/css">
     hr{
       border-top: 3px dashed #bbbb;
@@ -35,10 +69,22 @@
       </div>
       <div class = "box">
         <br>
-        <h3 style="color:#bbbb;">추출할 물체를 라벨링할 이름을 적어주세요</h3>
-        <textarea class="box" style="height:200px;" name="labelName">추출할 물체 라벨링 이름</textarea>
-        <br>
-      </div>
+        <h3 style="color:#bbbb;">추출할 물체를 라벨링 할 이름을 적어주세요</h3>
+        <p style="color:#bbbb;">1.person &emsp;2.bicycle &emsp; 3.car &emsp; 4.motorbike &emsp; 5.aeroplane &emsp; 6.bus &emsp; 7.train &emsp; 8.truck &emsp; 9.boat &emsp; 10.traffic light</p>
+        <p style="color:#bbbb;">11.fire hydrant &emsp; 12.stop sign &emsp; 13.parking meter &emsp; 14.bench &emsp; 15.bird &emsp; 16.cat &emsp; 17.dog &emsp; 18.horse &emsp; 19.sheep &emsp; 20.cow</p>
+        <p style="color:#bbbb;">21.elephant &emsp; 22.bear &emsp; 23.zebra &emsp; 24.giraffe &emsp; 25.backpack &emsp; 26.umbrella &emsp; 27.handbag &emsp; 28.tie &emsp; 29.suitcase &emsp; 30.frisbee</p>
+        <p style="color:#bbbb;">31.skis &emsp; 32.snowboard &emsp; 33.sports ball &emsp; 34kite &emsp; 35.baseball bat &emsp; 36.baseball glove &emsp; 37.skateboard &emsp; 38.sufboard &emsp; 39.tennis racket &emsp; 40.bottle</p>
+        <p style="color:#bbbb;">41.wine glass &emsp; 42.cup &emsp; 43.fork &emsp; 44.knife &emsp; 45.spoon &emsp; 46.bowl &emsp; 47.banana &emsp; 48.apple &emsp; 49.sandwich &emsp; 50.orange</p>
+        <p style="color:#bbbb;">51.broccoli &emsp; 52.carrot &emsp; 53.hot dog &emsp; 54.pizza &emsp; 55.donut &emsp; 56.cake &emsp; 57.chair &emsp; 58.sofa &emsp; 59.pottedplant &emsp; 60.bed</p>
+        <p style="color:#bbbb;">61.diningtable &emsp; 62.toilet &emsp; 63.tvmonitor &emsp; 64.laptop &emsp; 65.mouse &emsp; 66.remote &emsp; 67.keyboard &emsp; 68.cell phone &emsp; 69.microwave &emsp; 70.oven</p>
+        <p style="color:#bbbb;">71.toaster &emsp; 72.sink &emsp; 73.refrigerator &emsp; 74.book &emsp; 75.clock &emsp; 76.vase &emsp; 77.scissors &emsp; 78.teddy bear &emsp; 79.hair drier &emsp; 80.toothbrush</p>
+        <input type="Button" value="추가" onclick="addForm()">
+            <input type="Button" value="삭제" onclick="delForm()">
+            <input type="Submit" value="완료">
+        <form name="baseForm" action="" method="post">
+            <div id="addedFormDiv"></div><BR> <!-- 폼을 삽입할 DIV -->
+            
+          </form>
       <input class="input-btn" type="submit" name="Upload" value="학습 데이터 생성시작" onclick="uploadFile()">
     </form>
   </center>

@@ -5,6 +5,14 @@
   <title>메인 페이지</title>
   <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="upload.js"></script>
+  <script type="text/javascript">
+    function mainfile(){
+      location.href = "/mainfile";
+    }
+    function mainlink(){
+      location.href ="/mainlink";
+    }
+  </script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <style type="text/css">
     hr{
@@ -19,9 +27,11 @@
       <div class = "box" style="height: 175px;">
         <br>
         <h3 style="color:#bbbb;">동영상의 입력 방식을 선택하세요</h3><br>
-        <a class="download-btn" href="./mainfile.html">파일 올리기</a>
+        <input type="button" class="download-btn" value="파일 올리기" onclick="mainfile()"/>
+        <!--<a class="download-btn" href="./mainfile.html">파일 올리기</a>-->
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="download-btn" href="./mainlink.html">링크 올리기</a>
+        <input type="button" class="download-btn" value="링크 올리기" onclick="mainlink()"/>
+        <!--<a class="download-btn" href="./mainlink.html">링크 올리기</a>-->
       </div>
     </form>
   </center>
