@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var app = express();
-
+var path = require('path');
 //app.use(express.bodyParser());
 var bodyParser = require('body-parser');
 app.use(bodyParser());
@@ -11,7 +11,7 @@ app.listen(3303, "localhost", function() {
 
 
 app.get('/', function (req, res) {
-  fs.readFile('fileupload.html', function (error, data) {
+  fs.readFile('mainfile.html', function (error, data) {
     res.writeHead(200, { 'Content-Type': 'text/html'});
     res.end(data, function (error){
       console.log(error);
@@ -38,7 +38,7 @@ var multer = require('multer');
 var upload = multer({
   storage: multer.diskStorage({
     destination(req, file, done) {
-      doNotTrack(null, 'uploads/');
+      done(null, 'uploads/');
     },
     filename(req, file, done) {
       const ext = path.extname(file.originalname);
@@ -54,6 +54,6 @@ app.post('/upload',
   upload.fields([{ name:'uploadFile'}]),
   (req, res) => {
     console.log(req.files, req.body);
-    res.send('ok');
+    res.send('loading.html');
   },
 );
