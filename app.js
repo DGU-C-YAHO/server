@@ -83,7 +83,7 @@ var upload = multer({
     },
     filename(req, file, done) {
       const ext = path.extname(file.originalname);
-      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      done(null, path.basename(file.originalname));//, ext) + Date.now() + ext);
     },
   }),
 });
