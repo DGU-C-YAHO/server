@@ -10,6 +10,7 @@ app.listen(3303, "localhost", function() {
 });
 
 
+
 app.get('/', function (req, res) {
   fs.readFile('mainchoice.html', function (error, data) {
     res.writeHead(200, { 'Content-Type': 'text/html'});

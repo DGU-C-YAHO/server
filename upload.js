@@ -26,9 +26,3 @@ $('.image-upload-wrap').bind('dragover', function () {
 	$('.image-upload-wrap').bind('dragleave', function () {
 		$('.image-upload-wrap').removeClass('image-dropping');
 });
-
-function uploadFile(){
-  var uploadedFile = $('input[name=videofile]').val();
-  var label = $('input[name=labelName]').val();
-  var linkurl = $('input[name=urllink]').val();
-}
