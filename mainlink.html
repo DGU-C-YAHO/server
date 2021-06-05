@@ -5,38 +5,9 @@
   <title>메인 페이지</title>
   <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="/js/upload.js"></script>
+  <script src="/js/formadd.js"></script>
   <script type="text/javascript">
-    var count = 0;
     
-    function addForm(){
-      var addedFormDiv = document.getElementById("addedFormDiv");
-  
-      var str = "";
-      str+="<br>Label : "+count+" <input type='text' name='labelName1_"+count+"'>";
-      str+="Class Number : "+count+" <input type='text' name='labelnumber_"+count+"'>";
-      // 추가할 폼(에 들어갈 HTML)
-      
-      var addedDiv = document.createElement("div"); // 폼 생성
-      addedDiv.id = "added_"+count; // 폼 Div에 ID 부여 (삭제를 위해)
-      addedDiv.innerHTML  = str; // 폼 Div안에 HTML삽입
-      addedFormDiv.appendChild(addedDiv); // 삽입할 DIV에 생성한 폼 삽입
-  
-      count++;
-      document.baseForm.count.value=count;
-      // 다음 페이지에 몇개의 폼을 넘기는지 전달하기 위해 히든 폼에 카운트 저장
-    }
-  
-    function delForm(){
-      var addedFormDiv = document.getElementById("addedFormDiv");
-      
-      if(count >1){ // 현재 폼이 두개 이상이면
-        var addedDiv = document.getElementById("added_"+(--count));
-        // 마지막으로 생성된 폼의 ID를 통해 Div객체를 가져옴
-        addedFormDiv.removeChild(addedDiv); // 폼 삭제 
-      }else{ // 마지막 폼만 남아있다면
-        document.baseForm.reset(); // 폼 내용 삭제
-      }
-    }
   </script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <style type="text/css">
@@ -75,11 +46,9 @@
         <p style="color:#bbbb;">61.diningtable &emsp; 62.toilet &emsp; 63.tvmonitor &emsp; 64.laptop &emsp; 65.mouse &emsp; 66.remote &emsp; 67.keyboard &emsp; 68.cell phone &emsp; 69.microwave &emsp; 70.oven</p>
         <p style="color:#bbbb;">71.toaster &emsp; 72.sink &emsp; 73.refrigerator &emsp; 74.book &emsp; 75.clock &emsp; 76.vase &emsp; 77.scissors &emsp; 78.teddy bear &emsp; 79.hair drier &emsp; 80.toothbrush</p>
         <input type="Button" value="추가" onclick="addForm()">
-            <input type="Button" value="삭제" onclick="delForm()">
-            <input type="Submit" value="완료">
+          <input type="Button" value="삭제" onclick="delForm()" >
         <form name="baseForm" action="" method="post">
             <div id="addedFormDiv"></div><BR> <!-- 폼을 삽입할 DIV -->
-            
           </form>
         <br>
       </div>
