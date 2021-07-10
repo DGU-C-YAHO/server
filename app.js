@@ -97,3 +97,29 @@ app.post('/upload',
     });
   },
 );
+var upload = multer({
+  storage: multer.diskStorage({
+    destination(req, file, done) {
+      done(null, 'objuploads/');
+    },
+    filename(req, file, done) {
+      const ext = path.extname(file.originalname);
+      done(null, path.basename(file.originalname));//, ext) + Date.now() + ext);
+    },
+  }),
+});
+
+app.get('/objupload', (req, res) => {
+  res.sendFile(path.join(__dirname, 'objupload'));
+});
+app.post('/objupload',
+  upload.fields([{ name:'uploadObj'}]),
+  (req, res) => {
+    fs.readFile('mainlink.html', function (error, data){ //업로드 후 객체페이지로 이동
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.end(data,function (error){
+        console.log(error);
+      });
+    });
+  },
+);
