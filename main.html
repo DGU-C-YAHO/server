@@ -12,16 +12,22 @@
     function mainlink(){
       location.href ="/mainlink";
     }
+    function addobj(){
+      location.href ="/addobj";
+    }
   </script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <style type="text/css">
-    hr{
-      border-top: 3px dashed #bbbb;
-    }
-  </style>
 </head>
 <body>
-  <h2><b>Service Name</b></h2>
+  <nav>
+    <b>Service Name</b>
+    <ul>
+      <li>Upload by: </li>
+      <li><input type="button" class="nav-button" value="URL  Link" onclick="mainlink()"/></li>
+      <li><input type="button" class="nav-button" value="Video File" onclick="mainfile()"/></li>
+      <li><input type="button" class="nav-button" value="Add Object" onclick="addobj()"/></li>
+    </ul>
+    </nav>
   <hr>
   <center>
       <div class = "box" style="height: 175px;">

@@ -28,6 +28,14 @@ app.get('/mainfile', function (req, res){
     });
   });
 });
+app.get('/addobj', function (req, res){
+  fs.readFile('addobj.html', function (error, data){
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(data,function (error){
+      console.log(error);
+    });
+  });
+});
 app.get('/mainlink', function (req, res){
   fs.readFile('mainlink.html', function (error, data){
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -76,12 +84,12 @@ var upload = multer({
 });
 
 app.get('/upload', (req, res) => {
-  res.sendFile(path.join(__dirname, 'loading'));
+  res.sendFile(path.join(__dirname, 'addobj'));
 });
 app.post('/upload',
   upload.fields([{ name:'uploadFile'}]),
   (req, res) => {
-    fs.readFile('loading.html', function (error, data){ //업로드 후 로딩페이지로 이동
+    fs.readFile('addobj.html', function (error, data){ //업로드 후 객체페이지로 이동
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.end(data,function (error){
         console.log(error);

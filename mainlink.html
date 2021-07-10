@@ -7,7 +7,15 @@
   <script src="/js/upload.js"></script>
   <script src="/js/formadd.js"></script>
   <script type="text/javascript">
-    
+    function mainfile(){
+      location.href = "/mainfile";
+    }
+    function mainlink(){
+      location.href ="/mainlink";
+    }
+    function addobj(){
+      location.href ="/addobj";
+    }
   </script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <style type="text/css">
@@ -20,10 +28,18 @@
   </style>
 </head>
 <body>
-  <h2><b>Service Name</b></h2>
-  <hr>
+    <nav>
+        <b>Service Name</b>
+        <ul>
+          <li>Upload by: </li>
+          <li><input type="button" class="nav-button" value="URL  Link" onclick="mainlink()"/></li>
+          <li><input type="button" class="nav-button" value="Video File" onclick="mainfile()"/></li>
+          <li><input type="button" class="nav-button" value="Add Object" onclick="addobj()"/></li>
+        </ul>
+        </nav>
+      <hr>
   <center>
-    <form action="loading.html" method="post">
+    <form action="addobj.html" method="post">
     <div class="file-upload">
       <h3 style="color:#bbbb;">동영상 링크를 입력하세요</h3>
       <input class="linkbox" type="url" name="urllink" value="링크를 입력해주세요"><br>
@@ -34,25 +50,8 @@
       끝나는 시간 : <input class="time" type="text" name="endTimeMin">분
       <input class="time" type="text" name="endTimeSec"">초</h3>
       </div>
-      <div class = "box">
-        <br>
-        <h3 style="color:#bbbb;">추출할 물체를 라벨링 할 이름을 적어주세요</h3>
-        <p style="color:#bbbb;">1.person &emsp;2.bicycle &emsp; 3.car &emsp; 4.motorbike &emsp; 5.aeroplane &emsp; 6.bus &emsp; 7.train &emsp; 8.truck &emsp; 9.boat &emsp; 10.traffic light</p>
-        <p style="color:#bbbb;">11.fire hydrant &emsp; 12.stop sign &emsp; 13.parking meter &emsp; 14.bench &emsp; 15.bird &emsp; 16.cat &emsp; 17.dog &emsp; 18.horse &emsp; 19.sheep &emsp; 20.cow</p>
-        <p style="color:#bbbb;">21.elephant &emsp; 22.bear &emsp; 23.zebra &emsp; 24.giraffe &emsp; 25.backpack &emsp; 26.umbrella &emsp; 27.handbag &emsp; 28.tie &emsp; 29.suitcase &emsp; 30.frisbee</p>
-        <p style="color:#bbbb;">31.skis &emsp; 32.snowboard &emsp; 33.sports ball &emsp; 34kite &emsp; 35.baseball bat &emsp; 36.baseball glove &emsp; 37.skateboard &emsp; 38.sufboard &emsp; 39.tennis racket &emsp; 40.bottle</p>
-        <p style="color:#bbbb;">41.wine glass &emsp; 42.cup &emsp; 43.fork &emsp; 44.knife &emsp; 45.spoon &emsp; 46.bowl &emsp; 47.banana &emsp; 48.apple &emsp; 49.sandwich &emsp; 50.orange</p>
-        <p style="color:#bbbb;">51.broccoli &emsp; 52.carrot &emsp; 53.hot dog &emsp; 54.pizza &emsp; 55.donut &emsp; 56.cake &emsp; 57.chair &emsp; 58.sofa &emsp; 59.pottedplant &emsp; 60.bed</p>
-        <p style="color:#bbbb;">61.diningtable &emsp; 62.toilet &emsp; 63.tvmonitor &emsp; 64.laptop &emsp; 65.mouse &emsp; 66.remote &emsp; 67.keyboard &emsp; 68.cell phone &emsp; 69.microwave &emsp; 70.oven</p>
-        <p style="color:#bbbb;">71.toaster &emsp; 72.sink &emsp; 73.refrigerator &emsp; 74.book &emsp; 75.clock &emsp; 76.vase &emsp; 77.scissors &emsp; 78.teddy bear &emsp; 79.hair drier &emsp; 80.toothbrush</p>
-        <input type="Button" value="추가" onclick="addForm()">
-          <input type="Button" value="삭제" onclick="delForm()" >
-        <form name="baseForm" action="" method="post">
-            <div id="addedFormDiv"></div><BR> <!-- 폼을 삽입할 DIV -->
-          </form>
-        <br>
-      </div>
-      <input class="input-btn" type="submit" value="학습 데이터 생성시작" onclick="uploadFile()">
+      <br>
+      <input class="input-btn" type="submit" value="객체 선택하기" onclick="uploadFile()">
     </form>
   </center>
 </body>
