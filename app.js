@@ -84,12 +84,12 @@ var upload = multer({
 });
 
 app.get('/upload', (req, res) => {
-  res.sendFile(path.join(__dirname, 'addobj'));
+  res.sendFile(path.join(__dirname, 'selectobj'));
 });
 app.post('/upload',
   upload.fields([{ name:'uploadFile'}]),
   (req, res) => {
-    fs.readFile('addobj.html', function (error, data){ //업로드 후 객체페이지로 이동
+    fs.readFile('selectobj.html', function (error, data){ //업로드 후 객체페이지로 이동
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.end(data,function (error){
         console.log(error);
