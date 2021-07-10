@@ -13,7 +13,7 @@ app.listen(3303, "localhost", function() {
 
 
 app.get('/', function (req, res) {
-  fs.readFile('main.html', function (error, data) {
+  fs.readFile('mainlink.html', function (error, data) {
     res.writeHead(200, { 'Content-Type': 'text/html'});
     res.end(data, function (error){
       console.log(error);
