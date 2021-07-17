@@ -115,7 +115,7 @@ app.get('/objupload', (req, res) => {
 app.post('/objupload',
   upload.fields([{ name:'uploadObj'}]),
   (req, res) => {
-    fs.readFile('mainlink.html', function (error, data){ //업로드 후 객체페이지로 이동
+    fs.readFile('selectobj.html', function (error, data){ //업로드 후 객체페이지로 이동
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.end(data,function (error){
         console.log(error);
